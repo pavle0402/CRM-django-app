@@ -24,3 +24,6 @@ cursorObject.execute("CREATE DATABASE pavleco")
 print("Database created!!")
 #soo i had to install mysql-connector-python because i kept getting error even though it succesfully installed it the first way
 #i could not run my code for creating database.!!
+
+
+#Once the database is installed and everything is done this file is no more needed, but i'll leave it here for reminder.
