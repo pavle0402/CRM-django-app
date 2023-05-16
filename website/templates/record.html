@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="card">
+    <div class="card-header">
+      <h1>{{crecord.first_name}} {{crecord.last_name}}</h1>  <a href="{% url 'update_record' crecord.pk %}" class="btn btn-secondary">Edit</a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Information about customer.</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Contact e-mail: <strong>{{crecord.email}}</strong></li>
+        <li class="list-group-item">Country: <strong>{{crecord.country}}</strong></li>
+        <li class="list-group-item">City: <strong>{{crecord.city}}</strong></li>
+        <li class="list-group-item">Address: <strong>{{crecord.address}}</strong></li>
+        <li class="list-group-item">Zipcode: <strong>{{crecord.zipcode}}</strong></li>
+        <li class="list-group-item">Phone number: <strong>{{crecord.phone}}</strong></li>
+        <li class="list-group-item">Created: <strong>{{ crecord.created_at }}</strong></li>
+        <li class="list-group-item">ID: <strong>{{crecord.id}}</strong></li>
+      </ul>
+      <br>
+      <br>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Home page</a> 
+      <a href="{% url 'delete_record' crecord.pk %}" class="btn btn-danger">Delete</a>
+
+
+    </div>
+  </div>
+
+{% else %}
+<h1>You must be logged in to see this page.</h1>
+<a href="{% url 'home' %}"><strong>Login</strong></a>
+{% endif %}
+
+{% endblock %}

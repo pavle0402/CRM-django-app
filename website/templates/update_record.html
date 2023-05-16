@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{%block content%} 
+{% if user.is_authenticated%}
+    <div class="col-md-6 offset-md-3">
+    <br>
+    <h1>Update record</h1><br><br>
+    <form method="POST" action="{% url 'update_record' crecord.pk %}">
+        {% csrf_token %}
+        {{form.as_p}}<br>
+
+        <button type="submit"  style="position: relative; left: 50%" class="btn btn-primary btn-lg">Update</button>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            {%endfor%}
+        {%endif%}
+    </form>
+    </div>
+{%else%}
+ <h2>You're not allowed here mate. Go create an account first<br>
+<a href="{% url 'register' %}">Create account</a></h2>
+{%endif%}
+{% endblock %}
