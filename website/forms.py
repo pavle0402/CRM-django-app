@@ -85,3 +85,15 @@ class AddRecordForm(forms.ModelForm):
     #      else:
     #           raise ValueError("Invalid form for phone number. Try again.")
               
+
+
+
+class ContactForm(forms.Form):
+    email = forms.EmailField(required=True,max_length=100, label="Your email", widget=forms.widgets.EmailInput(attrs={"placeholder":"Enter your real email.",
+                                                                                                       "class":"form-control"}))
+    subject = forms.CharField(required=True,max_length=100,label="Topic", widget=forms.widgets.TextInput(attrs={"placeholder":"What topic do you wanna talk about?",
+                                                                                      "class":"form-control"}))
+    question = forms.CharField(required=True, label="Your question", widget=forms.widgets.Textarea(attrs={"placeholder": "Your question",
+                                                                                   "rows": 5,
+                                                                                   "class":"form-control"}))
+    

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError
 from django.urls import reverse_lazy
-from .forms import RegistrationForm, AddRecordForm
+from .forms import RegistrationForm, AddRecordForm, ContactForm
 from .models import Record
 from django.views.generic import (  DetailView,
                                     DeleteView,
@@ -116,3 +117,37 @@ class UpdateRecordView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request, "Record has been successfully updated.")
         return super().form_valid(form)
+
+
+
+def PrivacyView(request):
+    return render(request, 'privacy.html', {})
+
+def AboutView(request):
+    return render(request, 'about.html', {})
+
+
+def ContactView(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST or None)
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+            question = form.cleaned_data["question"]   
+            email = form.cleaned_data["email"]
+            
+            try:
+                send_mail(subject, question, email,['pavles2002@gmail.com'])
+                messages.success(request, "Your email has been sent successfully.")
+                return redirect('home')
+            except BadHeaderError:
+                raise BadHeaderError("Invalid header found.")
+
+    else:
+        form = ContactForm()
+    
+    return render(request, "contact.html", {'form': form})
+                
+
+            
+
+

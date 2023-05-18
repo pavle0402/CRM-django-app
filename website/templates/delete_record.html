@@ -2,21 +2,20 @@
 
 {% extends 'base.html' %}
 
-
-<title>Delete record</title>
-
+{% block title %}
+    <title>Delete record</title>
+{% endblock %}
 {% block content %}
 <div class="col-md-6 offset-md-3">
 
 {% if user.is_superuser %}
-    <h1>Delete post: {{post.title}}</h1>
     <div class="form-group">
         <form method="POST">
         {% csrf_token %}
         <strong>Are you sure you want to delete {{crecord.first_name}} {{crecord.last_name}}'s record?</strong>
         <button class="btn btn-success">Yes</button>
         
-        <a href="{%url 'home'%}"><button class="btn btn-danger">No</a></button>
+        <a class="btn btn-danger" href="{%url 'home'%}">No</a>
         
         {% if messages %}
             {% for message in messages %}
@@ -26,7 +25,18 @@
         {%endif%}
     </div>
 {%else%}
- <h2>You are not allowed here mate.</h2>
-{%endif%} 
+<style>
+    div {
+        display:inline;
+        align-content: space-between;
+        text-align: center;
+    }
+</style>
+<div>
+
+    <h1>You are not allowed here. For staff only.</h1><br><br>
 </div>
+<a style="margin:45%; text-align:center; display:inline;" class="btn btn-primary btn-lg" href="{% url 'record' crecord.pk %}">Go back</a>
+
+{%endif%} 
 {% endblock %}

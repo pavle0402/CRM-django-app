@@ -15,6 +15,12 @@ urlpatterns = [
     path('record/<int:pk>/delete', RecordDeleteView.as_view(), name='delete_record'),
     path('record/add_record', RecordAddView.as_view(), name='add_record'),
     path('update_record/<int:pk>', UpdateRecordView.as_view(), name='update_record'),
+    path('privacy', views.PrivacyView, name='privacy'),
+    path('about_us', views.AboutView, name='about'),
+    path('contact_page', views.ContactView, name='contact'),
+
+
+
 
 
 

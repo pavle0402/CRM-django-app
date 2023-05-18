@@ -31,8 +31,10 @@
   </div>
 
 {% else %}
-<h1>You must be logged in to see this page.</h1>
-<a href="{% url 'home' %}"><strong>Login</strong></a>
+<div class="col-md-6 offset-md-3">
+  <h1>You must be logged in to see this page.</h1>
+  <a href="{% url 'home' %}"><strong>Login</strong></a>
+</div>
 {% endif %}
 
 {% endblock %}
