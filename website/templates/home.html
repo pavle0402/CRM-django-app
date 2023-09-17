@@ -36,14 +36,14 @@ font-weight: 500;"><br>Records..</h3><br><hr>
         <th scope="col">Zipcode</th>
         <th scope="col">Phone</th>
         <th scope="col">Created at</th>
-        <th scope="col">>User's ID</a></th>
+        <th scope="col">User's ID</a></th>
       </tr>
     </thead>
     <tbody>
   {% if records %}
     {% for record in records %}
       <tr>
-        <td><a href="{% url 'record' record.pk %}">{{record.first_name}} {{record.last_name}}</a></td>
+        <td><strong><a href="{% url 'record' record.pk %}">{{record.first_name}} {{record.last_name}}</a></strong></td>
         <td>{{record.email}}</td>
         <td>{{record.country}}</td>
         <td>{{record.city}}</td>
