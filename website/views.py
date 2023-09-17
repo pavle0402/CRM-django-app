@@ -11,10 +11,6 @@ from django.views.generic import (  DetailView,
                                     UpdateView
                                     )
 
-
-
-
-
 def home(request):
     records = Record.objects.all()
 
