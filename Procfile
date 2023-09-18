@@ -1,1 +1,1 @@
-web: gunicorn crmdjango.wsgi
+web: gunicorn pavlecrm.wsgi --log-file -

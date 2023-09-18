@@ -13,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r64im)c=ea%r%xpv73nq!0@)6sskcvajp#vy$iyi_!k400*7it'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = False
 
+ALLOWED_HOSTS = ['pavlecrm-56d6cd4a8342.herokuapp.com/', '127.0.0.1']
 
 # Application definition
 
@@ -113,8 +113,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'temp-static-root/'
-STATICFILES_DIRS = (
+STATIC_ROOT = (
     os.path.join(BASE_DIR, 'static'),
                     )
 
